@@ -108,18 +108,20 @@ class SortTests(unittest.TestCase):
 
 
 class SkinTests(unittest.TestCase):
-    def test_queue_has_existing_plot_panel_and_video_plot_text(self):
+    def test_queue_has_dedicated_scrolling_plot_panel(self):
         playlist = ET.parse(ROOT / "720p/MyPlaylist.xml")
-        self.assertIsNotNone(playlist.find(".//include[.='Global_VideoPlot']"))
-        variables = ET.parse(ROOT / "720p/Includes_Variables.xml")
-        plot = variables.find(".//variable[@name='PlotBox_Text']")
-        values = list(plot)
-        video = next(v for v in values if v.get("condition") == "Window.IsActive(videoplaylist)")
-        self.assertEqual(video.text, "$INFO[ListItem.Plot]")
+        self.assertIsNotNone(playlist.find(".//include[.='MyMetropolisQueuePlot']"))
+        self.assertTrue(any("playlist_plot.py" in (c.text or "")
+                            for c in playlist.findall("onload")))
+        includes = ET.parse(ROOT / "720p/Includes_MyMetropolis.xml")
+        plot = includes.find(".//include[@name='MyMetropolisQueuePlot']")
+        for box in plot.findall(".//control[@type='textbox']"):
+            self.assertIn("MyMetropolis.QueuePlot", box.findtext("label"))
+            self.assertEqual(box.findtext("autoscroll"), "true")
 
     def test_custom_sort_buttons_bypass_native_sort_ids(self):
         menus = ET.parse(ROOT / "720p/Includes_MyMetropolis.xml")
-        buttons = menus.findall(".//control")
+        buttons = menus.findall(".//control[@type='button']")
         self.assertEqual([b.get("id") for b in buttons], ["7301", "7302"])
         for button in buttons:
             self.assertEqual(button.findtext("visible"), "Window.IsActive(videoplaylist)")

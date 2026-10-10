@@ -3,10 +3,15 @@
 Personal fork of [Metropolis](https://github.com/jingai/skin.metropolis), for
 Kodi 21 (Omega). Original authors and license are retained.
 
-## Current playlist improvements (4.2.1)
+## Current playlist improvements (4.2.2)
 
-- The video playback queue shows the selected item's plot in the existing
-  bottom synopsis panel, using Metropolis's fonts, position and scrolling rules.
+- The video playback queue shows the selected item's plot in a bottom synopsis
+  panel, using Metropolis's fonts and position. Long plots scroll automatically.
+- When the queue does not supply plot metadata, a read-only helper looks up
+  the highlighted entry by its Kodi library ID, then by its file path. It stops
+  when the queue window closes. No library records or queue entries are changed.
+- The panel displays a loading or missing-synopsis message instead of silently
+  disappearing. It stays visible regardless of the library's Hide Plot option.
 - The queue menu has working **Sort by** and **Ascending/Descending** actions.
   Choose Title, Show / episode, or First aired. Show / episode groups shows
   alphabetically and orders their seasons and episodes numerically.
@@ -30,9 +35,9 @@ are separate; they do not automatically transfer to the new skin.
 1. In Kodi 21, install the supplied ZIP through **Settings > Add-ons > Install
    from zip file** (enable Unknown sources if Kodi asks).
 2. Select **MyMetropolis** under **Settings > Interface > Skin**.
-3. In Skin settings, enable **Auto-scroll text** if you want the plot to scroll,
-   and leave **Hide plot** off. The panel follows the same options as source
-   playlists. The selected item must have plot metadata in Kodi.
+3. The queue synopsis scrolls automatically. The selected item must have plot
+   metadata in its queue entry or in Kodi's library. A missing-synopsis message
+   indicates that neither supplied a plot; it does not invent plot text.
 4. Queue a few episodes from a library playlist and open Current playlist.
    Verify that the bottom plot changes when the highlighted entry changes.
 5. Press Left. Choose **Sort by**, select a method, and check the queue order.
