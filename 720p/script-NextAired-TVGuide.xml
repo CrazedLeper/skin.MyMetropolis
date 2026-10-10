@@ -36,7 +36,7 @@
 			<height>820</height>
 			<aspectratio>scale</aspectratio>
 			<texture fallback="Background.png">$INFO[Skin.String(CustomBackground)]</texture>
-			<colordiffuse>BackgroundColor</colordiffuse>
+			<colordiffuse>MainBackgroundColor</colordiffuse>
 		</control>
 		<control type="group">
 			<animation effect="fade" time="250">WindowOpen</animation>

@@ -74,6 +74,12 @@
 	<backgrounddefault defaultID="settings">home\settings\</backgrounddefault>
 	<background label="13005">home\shutdown\</background>
 	<backgrounddefault defaultID="shutdown">home\shutdown\</backgrounddefault>
+	<background label="Playlists">home\playlists\</background>
+	<background label="Documentaries">home\documentaries\</background>
+	<background label="Home Videos">home\homevideos\</background>
+	<background label="Tutorials">home\tutorials\</background>
+	<background label="Rydes">home\rydes\</background>
+	<background label="Shutdown (power button)">home\shutdownpower\</background>
 	<backgroundBrowse>True</backgroundBrowse>
 
 	<!-- Thumbnails (Home2 icons, also specified in shortcuts/mainmenu.DATA.xml) -->

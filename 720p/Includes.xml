@@ -52,7 +52,7 @@
 		<control type="image">
 			<include>Dimensions_Fullscreen</include>
 			<texture background="true" fallback="Background.png">$INFO[Skin.String(CustomBackground)]</texture>
-			<colordiffuse>BackgroundColor</colordiffuse>
+			<colordiffuse>MainBackgroundColor</colordiffuse>
 		</control>
 	</include>
 	<include name="Global_Background_Fanart_Common">

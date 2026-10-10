@@ -10,6 +10,17 @@
 		<value condition="Control.HasFocus(8000) + !String.IsEmpty(Container(8000).ListItem.Art(landscape)) + String.IsEqual(Skin.String(WidgetBackgroundOrder),landscape)">$INFO[Container(8000).ListItem.Art(landscape)]</value>
 		<value condition="Control.HasFocus(8000) + !String.IsEmpty(Container(8000).ListItem.Art(fanart)) + String.IsEqual(Skin.String(WidgetBackgroundOrder),landscape)">$INFO[Container(8000).ListItem.Art(fanart)]</value>
 		<value condition="Control.HasFocus(8000) + !String.IsEmpty(Container(8000).ListItem.Art(thumb)) + String.IsEqual(Skin.String(WidgetBackgroundOrder),landscape)">$INFO[Container(8000).ListItem.Art(thumb)]</value>
+		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),home\playlists\)">home_art/playlists.jpg</value>
+		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),home\documentaries\)">home_art/documentaries.jpg</value>
+		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),home\homevideos\)">home_art/homevideos.jpg</value>
+		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),home\tutorials\)">home_art/tutorials.jpg</value>
+		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),home\rydes\)">home_art/rydes.jpg</value>
+		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),home\shutdownpower\)">home_art/shutdown-power.jpg</value>
+		<value condition="String.IsEqual(Container(9000).ListItem.Label,Playlists) + [String.IsEmpty(Container(9000).ListItem.Property(background)) | String.StartsWith(Container(9000).ListItem.Property(background),home\)]">home_art/playlists.jpg</value>
+		<value condition="String.IsEqual(Container(9000).ListItem.Label,Documentaries) + [String.IsEmpty(Container(9000).ListItem.Property(background)) | String.StartsWith(Container(9000).ListItem.Property(background),home\)]">home_art/documentaries.jpg</value>
+		<value condition="String.IsEqual(Container(9000).ListItem.Label,Home Videos) + [String.IsEmpty(Container(9000).ListItem.Property(background)) | String.StartsWith(Container(9000).ListItem.Property(background),home\)]">home_art/homevideos.jpg</value>
+		<value condition="String.IsEqual(Container(9000).ListItem.Label,Tutorials) + [String.IsEmpty(Container(9000).ListItem.Property(background)) | String.StartsWith(Container(9000).ListItem.Property(background),home\)]">home_art/tutorials.jpg</value>
+		<value condition="String.IsEqual(Container(9000).ListItem.Label,Rydes) + [String.IsEmpty(Container(9000).ListItem.Property(background)) | String.StartsWith(Container(9000).ListItem.Property(background),home\)]">home_art/rydes.jpg</value>
 		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),home\dvd\)">home_art/playdisc.jpg</value>
 		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),home\movies\)">home_art/movies.jpg</value>
 		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),home\tvshows\)">home_art/tvshows.jpg</value>
@@ -30,6 +41,17 @@
 		<value condition="!String.IsEmpty(Container(9000).ListItem.Property(background)) + !String.StartsWith(Container(9000).ListItem.Property(background),home\)">$INFO[Container(9000).ListItem.Property(background)]</value>
 	</variable>
 	<variable name="HomeBackgroundSkinShortcuts">
+		<value condition="String.IsEqual(Container(211).ListItem.Property(background),home\playlists\)">home_art/playlists.jpg</value>
+		<value condition="String.IsEqual(Container(211).ListItem.Property(background),home\documentaries\)">home_art/documentaries.jpg</value>
+		<value condition="String.IsEqual(Container(211).ListItem.Property(background),home\homevideos\)">home_art/homevideos.jpg</value>
+		<value condition="String.IsEqual(Container(211).ListItem.Property(background),home\tutorials\)">home_art/tutorials.jpg</value>
+		<value condition="String.IsEqual(Container(211).ListItem.Property(background),home\rydes\)">home_art/rydes.jpg</value>
+		<value condition="String.IsEqual(Container(211).ListItem.Property(background),home\shutdownpower\)">home_art/shutdown-power.jpg</value>
+		<value condition="String.IsEqual(Container(211).ListItem.Label,Playlists) + [String.IsEmpty(Container(211).ListItem.Property(background)) | String.StartsWith(Container(211).ListItem.Property(background),home\)]">home_art/playlists.jpg</value>
+		<value condition="String.IsEqual(Container(211).ListItem.Label,Documentaries) + [String.IsEmpty(Container(211).ListItem.Property(background)) | String.StartsWith(Container(211).ListItem.Property(background),home\)]">home_art/documentaries.jpg</value>
+		<value condition="String.IsEqual(Container(211).ListItem.Label,Home Videos) + [String.IsEmpty(Container(211).ListItem.Property(background)) | String.StartsWith(Container(211).ListItem.Property(background),home\)]">home_art/homevideos.jpg</value>
+		<value condition="String.IsEqual(Container(211).ListItem.Label,Tutorials) + [String.IsEmpty(Container(211).ListItem.Property(background)) | String.StartsWith(Container(211).ListItem.Property(background),home\)]">home_art/tutorials.jpg</value>
+		<value condition="String.IsEqual(Container(211).ListItem.Label,Rydes) + [String.IsEmpty(Container(211).ListItem.Property(background)) | String.StartsWith(Container(211).ListItem.Property(background),home\)]">home_art/rydes.jpg</value>
 		<value condition="String.IsEqual(Container(211).ListItem.Property(background),home\dvd\)">home_art/playdisc.jpg</value>
 		<value condition="String.IsEqual(Container(211).ListItem.Property(background),home\movies\)">home_art/movies.jpg</value>
 		<value condition="String.IsEqual(Container(211).ListItem.Property(background),home\tvshows\)">home_art/tvshows.jpg</value>
