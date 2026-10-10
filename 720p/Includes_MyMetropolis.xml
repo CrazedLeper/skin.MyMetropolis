@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<!-- These IDs are outside Kodi's native sort controls (3 and 4). -->
+	<include name="MyMetropolisPlaylistSortButtons">
+		<control type="button" id="7301">
+			<description>Sort the video playback queue</description>
+			<visible>Window.IsActive(videoplaylist)</visible>
+			<width>340</width>
+			<height>40</height>
+			<align>left</align>
+			<aligny>center</aligny>
+			<font>METF_DialogLarge</font>
+			<label>$LOCALIZE[550]: $INFO[Window(Home).Property(MyMetropolis.SortMethodLabel)]</label>
+			<textoffsetx>20</textoffsetx>
+			<textcolor>TextNF</textcolor>
+			<focusedcolor>DialogTextFO</focusedcolor>
+			<disabledcolor>TextDisabled</disabledcolor>
+			<texturefocus>ButtonFO2Wide.png</texturefocus>
+			<texturenofocus></texturenofocus>
+			<pulseonselect>false</pulseonselect>
+			<onclick>RunScript(special://skin/extras/playlist_sort.py,choose)</onclick>
+		</control>
+		<control type="button" id="7302">
+			<description>Change queue sort direction</description>
+			<visible>Window.IsActive(videoplaylist)</visible>
+			<width>340</width>
+			<height>40</height>
+			<align>left</align>
+			<aligny>center</aligny>
+			<font>METF_DialogLarge</font>
+			<label>$INFO[Window(Home).Property(MyMetropolis.SortOrderLabel)]</label>
+			<textoffsetx>20</textoffsetx>
+			<textcolor>TextNF</textcolor>
+			<focusedcolor>DialogTextFO</focusedcolor>
+			<disabledcolor>TextDisabled</disabledcolor>
+			<texturefocus>ButtonFO2Wide.png</texturefocus>
+			<texturenofocus></texturenofocus>
+			<pulseonselect>false</pulseonselect>
+			<onclick>RunScript(special://skin/extras/playlist_sort.py,direction)</onclick>
+		</control>
+	</include>
+</includes>

@@ -2,6 +2,7 @@
 <includes>
 	<include file="Defaults.xml" />
 	<include file="Includes_Variables.xml" />
+	<include file="Includes_MyMetropolis.xml" />
 	<include file="Includes_MediaOverlay.xml" />
 	<include file="Includes_Home1.xml" />
 	<include file="Includes_Home2.xml" />
@@ -392,7 +393,7 @@
 	<!-- Plot to show in all video viewtypes but NOT Video Info screen -->
 	<include name="Global_VideoPlot">
 		<control type="group" id="9900">
-			<visible>!Skin.HasSetting(Hide_Plot) + [Container.Content(Movies) | Container.Content(TVShows) | Container.Content(Seasons) | Container.Content(Episodes) | Container.Content(MusicVideos) | String.Contains(Container.FolderPath,plugin)]</visible>
+			<visible>!Skin.HasSetting(Hide_Plot) + [Container.Content(Movies) | Container.Content(TVShows) | Container.Content(Seasons) | Container.Content(Episodes) | Container.Content(MusicVideos) | String.Contains(Container.FolderPath,plugin) | [Window.IsActive(videoplaylist) + !String.IsEmpty(ListItem.Plot)]]</visible>
 			<include>PlotBox</include>
 		</control>
 	</include>
@@ -1261,6 +1262,7 @@
 		</control>
 		<control type="button" id="3">
 			<description>Sort by</description>
+			<visible>!Window.IsActive(videoplaylist)</visible>
 			<width>340</width>
 			<height>40</height>
 			<align>left</align>
@@ -1279,6 +1281,7 @@
 	<include name="NavMenuListOrder">
 		<control type="togglebutton" id="4">
 			<description>Order by</description>
+			<visible>!Window.IsActive(videoplaylist)</visible>
 			<width>340</width>
 			<height>40</height>
 			<align>left</align>

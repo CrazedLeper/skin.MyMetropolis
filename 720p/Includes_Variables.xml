@@ -340,6 +340,8 @@
 		<value condition="Window.IsActive(script-skinshortcuts.xml) + Control.HasFocus(301)">$LOCALIZE[31730]</value>
 		<value condition="Window.IsActive(script-skinshortcuts.xml) + Control.HasFocus(308)">$LOCALIZE[31731]</value>
 		<!-- Videos -->
+		<!-- The current queue has no movies/episodes Container.Content value. -->
+		<value condition="Window.IsActive(videoplaylist)">$INFO[ListItem.Plot]</value>
 		<value condition="[Container.Content(Movies) + [!Skin.HasSetting(Show_PlotOutline) | String.IsEmpty(ListItem.PlotOutline)]] | Container.Content(TVShows) | Container.Content(Episodes) | Container.Content(MusicVideos) | String.Contains(Container.FolderPath,plugin)">$INFO[ListItem.Plot]</value>
 		<value condition="Container.Content(Movies) + Skin.HasSetting(Show_PlotOutline) + !String.IsEmpty(ListItem.PlotOutline)">$INFO[ListItem.PlotOutline]</value>
 		<value condition="Container.Content(Seasons)">$INFO[Container.ShowPlot]</value>
