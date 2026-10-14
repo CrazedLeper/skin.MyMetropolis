@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="skin.mymetropolis" version="4.2.3" name="MyMetropolis" provider-name="jingai, Stoli, Amra, MacGyver, CrazedLeper">
+<addon id="skin.mymetropolis" version="4.2.5" name="MyMetropolis" provider-name="jingai, Stoli, Amra, MacGyver, CrazedLeper">
 	<requires>
 		<import addon="xbmc.gui" version="5.17.0"/>
 		<import addon="xbmc.python" version="3.0.0"/>

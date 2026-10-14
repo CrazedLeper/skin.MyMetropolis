@@ -133,7 +133,7 @@
 				<texture fallback="flags/Rating10/rating0.png">$INFO[ListItem.UserRating,flags/Rating10/rating,.png]</texture>
 				<aspectratio align="center" aligny="center">keep</aspectratio>
 				<colordiffuse>MediaFlagDiffuse</colordiffuse>
-				<visible>!Skin.HasSetting(ShowVideoPath) + !String.IsEmpty(ListItem.UserRating) + [!Skin.HasSetting(NextAired) | String.IsEmpty(Window(Home).Property(NextAired.NextDate))]</visible>
+				<visible>[!Skin.HasSetting(ShowVideoPath) | [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,musicvideo)]] + !String.IsEmpty(ListItem.UserRating) + [!Skin.HasSetting(NextAired) | String.IsEmpty(Window(Home).Property(NextAired.NextDate))]</visible>
 			</control>
 			<control type="image">
 				<posx>-8</posx>
@@ -144,7 +144,7 @@
 				<texture>flags/Rating10/rating0.png</texture>
 				<aspectratio align="center" aligny="center">keep</aspectratio>
 				<colordiffuse>MediaFlagDiffuse</colordiffuse>
-				<visible>!Skin.HasSetting(ShowVideoPath) + String.IsEmpty(ListItem.UserRating) + [!Skin.HasSetting(NextAired) | String.IsEmpty(Window(Home).Property(NextAired.NextDate))]</visible>
+				<visible>[!Skin.HasSetting(ShowVideoPath) | [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,musicvideo)]] + String.IsEmpty(ListItem.UserRating) + [!Skin.HasSetting(NextAired) | String.IsEmpty(Window(Home).Property(NextAired.NextDate))]</visible>
 			</control>
 			<!-- Video Path -->
 			<control type="fadelabel">
@@ -159,7 +159,7 @@
 				<font>METF_MPAA</font>
 				<textcolor>MPAADescription</textcolor>
 				<label>$INFO[ListItem.FilenameAndPath]</label>
-				<visible>!String.Contains(ListItem.FilenameAndPath," ") + Skin.HasSetting(ShowVideoPath)</visible>
+				<visible>!String.Contains(ListItem.FilenameAndPath," ") + Skin.HasSetting(ShowVideoPath) + ![String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,musicvideo)]</visible>
 			</control>
 			<control type="textbox">
 				<posx>-8</posx>
@@ -170,7 +170,7 @@
 				<font>METF_MPAA</font>
 				<textcolor>MPAADescription</textcolor>
 				<label>$INFO[ListItem.FilenameAndPath]</label>
-				<visible>String.Contains(ListItem.FilenameAndPath," ") + Skin.HasSetting(ShowVideoPath)</visible>
+				<visible>String.Contains(ListItem.FilenameAndPath," ") + Skin.HasSetting(ShowVideoPath) + ![String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,musicvideo)]</visible>
 			</control>
 			<!-- TV Show Next Aired info -->
 			<control type="label">
@@ -259,7 +259,35 @@
 				<label>$INFO[ListItem.Plot]</label>
 				<include condition="!Skin.HasSetting(AutoScrollFast)">AutoScrollLong</include>
 				<include condition="Skin.HasSetting(AutoScrollFast)">AutoScrollLongFast</include>
-				<visible>!Control.IsVisible(50)</visible>
+				<visible>!Control.IsVisible(50) + ![String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,musicvideo)]</visible>
+			</control>
+
+			<!-- Plot with room for the file path -->
+			<control type="textbox">
+				<posx>-8</posx>
+				<posy>138</posy>
+				<width>515</width>
+				<height>234</height>
+				<align>justify</align>
+				<font>METF_PlotText</font>
+				<textcolor>TextNF</textcolor>
+				<label>$INFO[ListItem.Plot]</label>
+				<include condition="!Skin.HasSetting(AutoScrollFast)">AutoScrollLong</include>
+				<include condition="Skin.HasSetting(AutoScrollFast)">AutoScrollLongFast</include>
+				<visible>!Control.IsVisible(50) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,musicvideo)]</visible>
+			</control>
+
+			<!-- Full path stays visible independently of the scrolling synopsis. -->
+			<control type="textbox" id="7007">
+				<posx>-8</posx>
+				<posy>382</posy>
+				<width>515</width>
+				<height>98</height>
+				<align>left</align>
+				<font>METF_MPAA</font>
+				<textcolor>MediaDetailsInfo</textcolor>
+				<label>$INFO[ListItem.FilenameAndPath]</label>
+				<visible>!Control.IsVisible(50) + !String.IsEmpty(ListItem.FilenameAndPath) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,musicvideo)]</visible>
 			</control>
 
 			<!-- Director/Status/Cast selector -->
@@ -510,9 +538,20 @@
 			<!-- Refresh -->
 			<control type="button" id="6">
 				<include>VideoInfoButton</include>
+				<visible>!String.IsEqual(ListItem.DBType,episode)</visible>
 				<texturenofocus>buttons/button_refresh.png</texturenofocus>
 				<texturefocus>buttons/button_refreshFO.png</texturefocus>
 				<include>Animation_ButtonFocus</include>
+			</control>
+			<!-- Episode identification uses its own ID: Kodi intercepts clicks on ID 6. -->
+			<control type="button" id="7006">
+				<include>VideoInfoButton</include>
+				<texturenofocus>buttons/button_refresh.png</texturenofocus>
+				<texturefocus>buttons/button_refreshFO.png</texturefocus>
+				<include>Animation_ButtonFocus</include>
+				<onclick>RunScript(special://skin/resources/identify_episode.py,$INFO[ListItem.DBID])</onclick>
+				<visible>String.IsEqual(ListItem.DBType,episode)</visible>
+				<enable>!Library.IsScanningVideo</enable>
 			</control>
 			<!-- Trailer -->
 			<control type="button" id="11">
@@ -635,6 +674,12 @@
 				<include>VideoInfoButtonLabel</include>
 				<label>$LOCALIZE[184]</label>
 				<visible>ControlGroup(7003).HasFocus(6)</visible>
+			</control>
+			<control type="label">
+				<description>Identify episode</description>
+				<include>VideoInfoButtonLabel</include>
+				<label>Identify episode</label>
+				<visible>ControlGroup(7003).HasFocus(7006)</visible>
 			</control>
 			<control type="label">
 				<description>Set rating</description>
